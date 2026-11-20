@@ -26,7 +26,7 @@ def choose_action(cur_state, epsilon):
     return 1
 
 alpha = 0.1
-gamma = 0.9
+gama = 0.9
 epsilon = 1.0
 min_epsilon = 0.05
 num_episodes = 20000
@@ -49,7 +49,7 @@ for episode in range(num_episodes):
         else:
             next_sum, next_dealer, next_ace = next_state
             next_q = max(q_values[next_sum][next_dealer][next_ace])
-            target_q = reward + gamma * next_q
+            target_q = reward + gama * next_q
 
         q_values[player_sum][dealer_card][usable_ace][action] = old_q + alpha * (target_q - old_q)
         cur_state = next_state
@@ -76,7 +76,7 @@ print(f"Losses = {loss_count}")
 print(f"Draws = {draw_count}")
 print()
 
-
+#next part
 for episode in range(5):
     cur_state, info = env.reset()
     done = False
@@ -95,4 +95,4 @@ for episode in range(5):
 train_env.close()
 env.close()
 
-###YOUR Q-LEARNING CODE ENDS
+
